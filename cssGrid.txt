@@ -12,5 +12,4 @@ grid-template-columns:
 grid-template-rows:
     Za pomocą tych właściwości oraz jednostek podziału ustalamy podział na kolumny i wiersze.
 
-
 Explicit vs implicit grid.
