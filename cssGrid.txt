@@ -1,0 +1,15 @@
+Pamiętaj o order, span, repeat.
+
+Idea grida polega na podzieleniu dowolnego elementu DOM na siatkę i przypisania elementów dzieci do różnych miejsc tej siatki.
+! Pozycjonowanie elementów dotyczy wyłącznie bezpośrednich dzieci elementu, który ma ustawiony display: grid.
+    container > items
+Grid eliminuje konieczność używania dziwnych tricków css do pozycjonowania.
+    Kiedyś wcale nie było tak łatwo zrobić jedną kolumnę 300px a resztę auto.
+Dostępne podziały px, %, fr, auto. repeat
+    Lepiej zastąpić % nowymi podziałami "fr".
+
+grid-template-columns:
+grid-template-rows:
+    Za pomocą tych właściwości oraz jednostek podziału ustalamy podział na kolumny i wiersze.
+
+Explicit vs implicit grid.
