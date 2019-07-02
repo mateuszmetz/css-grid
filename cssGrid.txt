@@ -13,3 +13,12 @@ grid-template-rows:
     Za pomocą tych właściwości oraz jednostek podziału ustalamy podział na kolumny i wiersze.
 
 Explicit vs implicit grid.
+
+Grid tracks oraz Grid lines.
+    Track to ścieżka kolumny lub rzędu.
+    Grid line to linie między trackami, jest ich zawsze o jedną więcej niż kolumn/rzędów. Numerowane od 1.
+
+W FDA:
+- pełne linie to obszar explicit grida.
+- linie kreskowane są explicit
+- linie kropkowane są implicit.
