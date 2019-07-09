@@ -40,13 +40,14 @@ Explicit vs Implicit CSS Grid:
     Z tego powodu, właściwość grid-auto-columns nie ma wpływu, bez zmiany grid-auto-flow.
     Po ustawieniu grid-auto-flow: columns, Grid będzie wrzucał "pozostałe" elementy do kolumn implicit.
 
-Ustawianie rozmiarów ścieżek:
+Ustawianie rozmiarów ścieżek (kolumn i rzędów):
     Mieszanie grid-gap w prikselach z grid-template-columns w procentach powoduje wyjście poza 100% w poziomie.
     ! Aby wygodnie pilnować trzymania 100% obszaru strony przy jednoczesnym stosowaniu gapu/marginesów w px, lepiej stosować fr zamiast %.
         Wtedy Grid sam weźmie pod uwagę gapy w px i wymiary viewporta okna, a następnie sam dobierze rozmiary elementów.
     ! The fr unit represents a fraction of the leftover space in the grid container.
         Jednostka fr jest elastyczna, reprezentuje część pozostałego/wolnego miejsca w kontenerze Grida.
         Grid wpierw układa elementy, które mają explicit konkretne rozmiary
+        fr stands for free space
     ! Domyślne rozmiary Grida:
         Szeroki na szerokość viewporta
         Wysoki zależnie od sumy wysokości wszystkich elementów.
@@ -61,5 +62,39 @@ repeat(ilośćPowt, wartość)
         repeat(2, auto 1f)  daje "auto 1fr auto 1fr"
     Może być jedną z wartości obok innych:
         grid-template-columns: auto repeat(3, 1fr) 2fr;
+
+Ustawianie rozmiarów elementów Grida:
+    Ustawienie szerokości jednego elementu na sztywno (px, %) wpływa na rozmiary całej ścieżki w której jest ten element.
+    Domyślnie, zawartość elementu również wpływa na jego rozmiary a tym samym na ścieżkę.
+    grid-column: span 3;
+        Ustawiamy ile kolumn ma zajmować element.
+        Jeśli span będzie zbyt duży by element się zmieścił w ścieżce, element przeskoczy do kolejnej ścieżki w której się zmieści.
+        Jeśli span będzie większy niż ilość wcześniej zadeklarowanych ścieżek, grid stworzy dodatkowe, implicit ścieżki.
+        Zbyt duże rozmiary zawartości tego elementu dalej będą wpływać na całą kolumnę.
+
+Pozycjonowanie elementów w Gridzie:
+    ! -1 zawsze oznacza linię końca, niezależnie od ilości ścieżek i tego jak się zmieniają.
+            Jest bardziej uniwersalne i odporne na zmiany.
+    ! -1 działa w oczekiwany sposób przy zadeklarowaniu explicit kolumn i rzędów.
+
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-column: 2 / 4;
+        Zapisy są równoznaczne.
+
+    grid-column: 1 / span 3;
+        Początek na 1 kolumnie, obszar trzech kolumn.
+    grid-column: span 2 / 4;
+        Obszar trzech kolumn, koniec na 4tej ścieżce.
+
+    grid-column: 1 / -1;
+        -1 oznacza linię końcową.
+        -2 oznacza drugą linię od końca.
+
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+        Pokrywa całego explicit Grida.
+
+
     
     
