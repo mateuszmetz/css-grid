@@ -1,5 +1,9 @@
 Pamiętaj o order, span, repeat.
 
+Emmet ma fajne skróty dla CSS, np:
+    gtc -> grid-template-columns.
+    gce -> grid-column-end.
+
 Idea grida polega na podzieleniu dowolnego elementu DOM na siatkę i przypisania elementów dzieci do różnych miejsc tej siatki.
 ! Pozycjonowanie elementów dotyczy wyłącznie bezpośrednich dzieci elementu, który ma ustawiony display: grid.
     container > items
@@ -76,6 +80,7 @@ Pozycjonowanie elementów w Gridzie:
     ! -1 zawsze oznacza linię końca, niezależnie od ilości ścieżek i tego jak się zmieniają.
             Jest bardziej uniwersalne i odporne na zmiany.
     ! -1 działa w oczekiwany sposób przy zadeklarowaniu explicit kolumn i rzędów.
+    ! Pamiętaj, że jeśli chcesz jakiś element na końcu ścieżki, -1 musi być ustawione na column-end albo row-end!
 
     grid-column-start: 2;
     grid-column-end: 4;
@@ -95,6 +100,39 @@ Pozycjonowanie elementów w Gridzie:
     grid-row: 1 / -1;
         Pokrywa całego explicit Grida.
 
+
+auto-fill vs auto-fit:
+    grid-template-columns: repeat(auto-fill, 100px);
+        Tworzy kolumny po 100px, tyle ile się zmieści do końca szerokości strony.
+        Niezależny od ilości elementów.
+        Jeśli elementów jest mniej niż kolumn, wstawia puste kolumny.
+        Explicit grid kończy się na ostatniej kolumnie.
+    auto-fit 
+        Zachowuje się jak auto-fill, ale po ułożeniu elementów, jeśli elementów jest mniej niż kolumn, redukuje puste kolumny.
+        Zależny od ilości elementów.
+        Explicit grid kończy się na ostatnim elemencie.
+
+    Typowe zastosowanie, gdy chcesz mieć część elementów z lewej, a jeden z prawej:
+        .container {
+            grid-template-columns: repeat(auto-fill, 150px);
+        }
+        .lastItem {
+            column-end: -1;
+        }
+
+minmax():
+    Kombinacja auto-fill/fit z minmax() zastępuje dużą część media queries, bo jest responsywna z natury.
+    minmax() określa minimalne i maksymalne rozmiary ścieżki, tworzonej przez funkcję repeat().
+    
+    Typowe zastosowanie:
+        .container {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+        auto-fit tworzy kolumny na całą szerokość strony.
+        minmax ustawia minimalny rozmiar elementu na 150px, natomiast 1fr połączone z auto-fit wypełnia
+
+    fitcontent(150px), jako rozmiar kolumny w grid-template-columns, ogranicza rozmiar elementów do 150px.
+        Czasem się może przydać.
 
     
     
