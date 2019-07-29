@@ -1,5 +1,3 @@
-Pamiętaj o order, span, repeat.
-
 Emmet ma fajne skróty dla CSS, np:
     gtc -> grid-template-columns.
     gce -> grid-column-end.
@@ -40,7 +38,7 @@ Explicit vs Implicit CSS Grid:
         grid-auto-rows: 100px;
         grid-auto-columns: 250px;
 
-! Domyślne zachowanie Grida to tworzenie kolejnych rzędów implicit dla elementów poza explicit gridem.
+! auto-flow. Domyślne zachowanie Grida to tworzenie kolejnych rzędów implicit dla elementów poza explicit gridem.
     Z tego powodu, właściwość grid-auto-columns nie ma wpływu, bez zmiany grid-auto-flow.
     Po ustawieniu grid-auto-flow: columns, Grid będzie wrzucał "pozostałe" elementy do kolumn implicit.
 
@@ -134,5 +132,74 @@ minmax():
     fitcontent(150px), jako rozmiar kolumny w grid-template-columns, ogranicza rozmiar elementów do 150px.
         Czasem się może przydać.
 
+grid-template-areas:
+    Nazwy należy umieścić w pazurkach:
+        grid-template-areas: "sidebar-1 content sidebar-2";
+    Kropka oznacza pole bez nazwy.
+        grid-template-areas: "header header .";
+    Używanie grid-template-area pomaga w definiowaniu responsywności.
+        Elementy będą się trzymać przypisanym im obszarom, niezależnie od zmian rozmiarów ścieżek lub umiejscowienia obszarów za pomocą media queries.
+        Często wystarczy jedynie przedefiniować układ obszarów, jeśli ścieżki są porządnie zdefiniowane.
+    Po zdefiniowaniu obszarów, dostępne są również domyślne nazwy linii "*-start" i "*-end" od nazw obszarów.
+        .container {
+            grid-template-areas: "sidebar-1 content sidebar-2";
+        }
+        .item5 {
+            grid-column: sidebar-1-start / sidebar-1-end;
+        }
     
-    
+Nazywanie linii za pomocą nawiasów []:
+    Można również dać więcej w nawiasach, wtedy obie wskazują na to samo miejsce.
+        grid-template-columns: [site-start sidebar-start] 1fr [content-start sidebar-end] 500px [content-end] 1fr [site-end];
+
+grid-auto-flow dense:
+    Domyślnie Grid układa elementy z przerwami, jeśli niektóre są zbyt duże i przeskakują do następnej ścieżki.
+    Opcja dense powoduje upychanie "luźnych" elementów w puste miejsca, z pominięciem ich kolejności, po ułożeniu elementów ze sztywnymi definicjami położenia.
+
+Centering / Aligning elementów (ustawiaj oś kolumn pierwszą, rzędów drugą):
+    Nawet jeśli szkielet strony nie jest oparty na Gridzie, warto go używać do wyśrodkowywania zawartości elementów.
+        .item {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+        }
+    Domyślnie elementy w kontenerze Grida mają ustawione:
+        align-items: stretch;
+        justify-items: stretch;
+    Domyślnie, cała zawartość kontenera Grida ma ustawione:
+        justify-content: start;
+
+    align-*
+        osią jest kolumna, przesuwa elementy na osi kolumn
+    justify-*
+        osią jest rząd, przesuwa elementy na osi rzędów
+    place-*
+        ustawia obie właściwości
+
+    *-content
+        Ustawienie położenia całej zawartości kontenera Grida.
+    *-items
+        Używany w obrębie kontenera Grida.
+    *-self
+        Używany jako właściwość danego elementu.
+        Nadpisuje ustawienia content oraz items.
+
+
+    stretch, center, start, end
+
+    place-items: center center;
+        Ustawia wartości align i justify za jednym zamachem.
+        Align, czyli kolumny/wertykalnie pierwsze.
+
+    Przydatne i często używane, gdy kontener grida jest szerszy niż jego zawartość:
+        justify-content: space-between;
+            Dzieli pozostałe miejsce na równe części i dokłada je między elementami.
+        justify-content: space-around;
+            Dzieli pozostałe miejsce na równe części i dokłada je po obu stronach elementów.
+        Można użyć tych wartości również dla align, ale zwykle strony nie mają sztywnej wysokości.
+
+Order:
+    Domyślne ustawienie:
+        order: 0;
+    Za pomocą zmian wartości order, można zmieniać kolejność układania elementów w Gridzie.
+    Zmiany orderu mieszają z kolejnością zaznaczania tekstu na stronie oraz z czytnikami stron (dla niewidomych?).
