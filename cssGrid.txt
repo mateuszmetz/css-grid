@@ -203,3 +203,12 @@ Order:
         order: 0;
     Za pomocą zmian wartości order, można zmieniać kolejność układania elementów w Gridzie.
     Zmiany orderu mieszają z kolejnością zaznaczania tekstu na stronie oraz z czytnikami stron (dla niewidomych?).
+
+Zagnieżdżanie Gridów:
+
+W razie problemów i dziwnych zachowań:
+    Sprawdzić problem inspektorem.
+    Sprawdzić zachowanie w innej przeglądarce.
+Naturalne rozmiary obrazów mogą spowodować dziwne zachowania ścieżek grida.
+    Ustawić klasie obrazu:
+        width: 100%
