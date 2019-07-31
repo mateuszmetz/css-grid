@@ -212,3 +212,5 @@ W razie problemów i dziwnych zachowań:
 Naturalne rozmiary obrazów mogą spowodować dziwne zachowania ścieżek grida.
     Ustawić klasie obrazu:
         width: 100%
+
+! Grid przydaje się do nakładania na siebie elementów (overlays).
