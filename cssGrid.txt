@@ -214,3 +214,25 @@ Naturalne rozmiary obrazów mogą spowodować dziwne zachowania ścieżek grida.
         width: 100%
 
 ! Grid przydaje się do nakładania na siebie elementów (overlays).
+
+Grid vs Flexbox:
+    Grid potrafi większość tego co Flexbox.
+    Grid jest bardziej konsekwentny na wszystkich przeglądarkach. Flexbox ma więcej różnic i bugów.
+    Pozycjonowanie elementów w obrębie jednego rzędu, jest znacznie prostsze i elastyczne za pomocą Flexa.
+        Za pomocą Grida trzeba czasem zdefiniować kolumny, co zmniejsza uniwersalność.
+    Wyśrodkowywanie elementów jest podobnie łatwe w obu.
+    Wadą Grida są sztywne rozmiary ścieżek, czyli bez ręcznego ustawiania spanów, nie można zmieniać długości kolumn/rzędów.
+    Wadą Fleksa jest brak odpowiednika grid-gap:
+        Powoduje to problemy z marginesami, gdy flex układa elementy o różnej szerokości.
+            Ludzie sobie z tym radzą dodając ujemny prawy margines na kontenerze flexa i dodatni prawy na elemencie.
+    Grid jest elastyczny w sytuacjach gdy nie znamy ilości elementów, dzięki auto-fit i minmax, bo robi przewidywalny wrap.
+        Flex podczas wrapowania dodaje jakiś margines.
+    Gridem nie można zrobić różnych szerokości kolumn w kolejnych rzędach.
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .item {
+            flex: 1;
+        }
+
