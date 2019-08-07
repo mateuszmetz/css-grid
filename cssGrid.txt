@@ -236,3 +236,16 @@ Grid vs Flexbox:
             flex: 1;
         }
 
+Wysokość strony na 100% wysokości okna:
+    .container {
+      height: 100vh;
+    }
+
+Część elementów po lewej, część po prawej:
+    Zdefiniować ilość kolumn explicit, na elementy po lewej, używając fr.
+    Ustawić grid-auto-flow na column.
+    Dodać elementy po prawej, które będą w kolumnach auto, implicit.
+
+Zmienne przydają się do parametryzowania właściwości Grida.
+    Np. span różnych elementów.
+
