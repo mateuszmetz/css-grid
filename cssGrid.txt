@@ -147,6 +147,10 @@ grid-template-areas:
         .item5 {
             grid-column: sidebar-1-start / sidebar-1-end;
         }
+    Elementowi można przypisać pole:
+        .item6 {
+            grid-area: areaName;
+        }
     
 Nazywanie linii za pomocą nawiasów []:
     Można również dać więcej w nawiasach, wtedy obie wskazują na to samo miejsce.
@@ -249,3 +253,35 @@ Część elementów po lewej, część po prawej:
 Zmienne przydają się do parametryzowania właściwości Grida.
     Np. span różnych elementów.
 
+Planując responsywną stronę, od razu używać grid-template-aeras.
+
+Jeśli coś nie chce działać, spróbować ustawić css wybierając inny element DOM.
+    Np. zamiast wybierać li, wybrać a, które jest w każdym z elementów li.
+
+ARIA controls.
+
+Używanie kolumn z auto-fit i minmax jest lepsze od grid-auto-flow column.
+    Element jest wtedy od razu responsywny.
+
+img {
+    width: 100%;
+}
+
+display: block;
+
+Pseudo-elementy :before oraz :after, zachowują się jak elementy Grida.
+
+Przygotowując responsywność jednego elementu, wziąć pod uwagę, że horyzontalny scroll może wynikać z wielkości innego elementu.
+
+Selektor ~
+
+Ustawiając animacje/transitions CSS, używać max-height, żeby pojawienie się i znikanie elementu przesuwało pozostałe.
+    max-height: 0; // gdy element jest schowany
+    max-height: 500px // ? gdy element ma być pokazany.
+Aby zmienić perspektywę:
+    .container {
+        perspective: 100px;
+    }
+    .item {
+        overflow: hidden;
+    }
