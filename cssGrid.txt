@@ -285,3 +285,16 @@ Aby zmienić perspektywę:
     .item {
         overflow: hidden;
     }
+
+Centrowanie całej zawartości strony:
+    body {
+        display: grid;
+        justify-content: center; 
+    }
+
+    .container {
+        display: grid;
+        margin: 200px auto;
+    }
+
+Unikać horyzontalnego scrolla.
